@@ -13,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        public function login_with_credentials(){
+            
+        }
     }
 
     /**
