@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Direction;
 
 class DirectionController extends Controller
 {
@@ -13,7 +14,8 @@ class DirectionController extends Controller
      */
     public function index()
     {
-        //
+        $directions= Direction::paginate();
+        return view('directions.index', compact ('directions')); 
     }
 
     /**
@@ -45,7 +47,8 @@ class DirectionController extends Controller
      */
     public function show($id)
     {
-        //
+        $direction = Direction::findOrFail($id);
+        dd($direction);
     }
 
     /**

@@ -19,10 +19,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-
-    <form action="{{ route(workplaces.create') }}" method="POST">
-
-    
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -54,26 +50,42 @@
 
 
 
-@foreach ($workplace->items() as $workplace)
+
+@foreach ($user->items() as $user)
 @endforeach
     
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Started_at</th>
-      <th scope="col">Ended_at</th>
-      <th scope="col">Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($workplace->items() as $workplace)
-    <tr>
-    <td>{{ $workplace->id }}<td>
-    <td>{{ $workplace->started_at }}<td>
-    <td>{{ $workplace->ended_at }}<td>
-    <td>{{ $workplace->title }}<td>
-    <tr>
+<tabl<table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name / Email</th>
+        <th>Workplaces</th>
+        <th>Role</th>
+        <th>Last online</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($users->items() as $user)
+          <tr>
+              <td>{{ $user->id }}</td>
+              <td>{{ $user->name }}<br />{{ $user->email }}</td>
+              <td>{{ $user->workplaces>title ?? '' }}</td>
+              <td>{{ $user->role->name }}</td>
+              <td>{{ $user->last_online }}</td>
+              <td>
+                <a class="btn btn-outline-primary" href="{{ route('users.show', ['user' => $user->id]) }}">Details</a>
+                <a class="btn btn-outline-primary" href="{{ route('users.edit', ['user' => $user->id]) }}">Edit</a>
+                <a class="btn btn-outline-primary" href="{{ route('change_password.edit', ['user' => $user->id]) }}">Change password</a>
+              </td>
+          </tr>
+      @endforeach
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+        {{ $users->links() }}
+  </div>
     @endforeach
     
   </tbody>

@@ -11,7 +11,16 @@ class Direction extends Model
 
     protected $fillable = [
         'name',
-        'emailnativ_name'
+        'email',
+        'nativ_name',
         
     ];
+
+    /**
+     * Get the college for the direction.
+     */
+    public function college()
+    {
+        return $this->belongsTo(College::class);
+    }
 }

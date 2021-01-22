@@ -9,7 +9,15 @@ class Topic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name'
+        'name',
         
     ];
+
+    /**
+    * Get the direction for the topic.
+    */
+   public function direction()
+   {
+       return $this->belongsTo(Direction::class);
+   }
 }

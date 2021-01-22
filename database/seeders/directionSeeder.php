@@ -17,9 +17,9 @@ class directionSeeder extends Seeder
     {
         DB::table('directions')->insert([
             'name' => Str::random(10),
-            'native_name' => Str::random(10),
-            
+            'nativ_name' => Str::random(10),
+                     
         ]);
     }
-    }
+    } 
 

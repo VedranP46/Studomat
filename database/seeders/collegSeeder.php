@@ -20,7 +20,7 @@ class collegSeeder extends Seeder
         DB::table('colleges')->insert([
             'name' => Str::random(10),
             'adress' => Str::random(10),
-            
+            'oib' => Str::random(11),
         ]);
     }
 }

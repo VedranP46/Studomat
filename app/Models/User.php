@@ -39,5 +39,34 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
+
+    public function exams()
+    {
+        return $this->hasMany(exam::class); 
+    }
+
+    public function workplace()
+    {
+        return $this->belongsTo(workplace::class);
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Get the direction for the user.
+     */
+    public function direction()
+    {
+        return $this->belongsTo(Direction::class);
+    }
+
+
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Topic;
 
-class TopicController extends Controller
+class group_exam extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics= Topic::paginate();
-        return view('topics.index', compact ('topics')); 
+        $group_exam= group_exam::paginate();
+        return view('group_exams.index', compact ('group_exams')); 
     }
 
     /**
@@ -47,8 +46,8 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $topic = Topic::findOrFail($id);
-        dd($topic);
+        $group_exam= group_exam::paginate();
+        return view('group_exams.index', compact ('group_exams')); 
     }
 
     /**

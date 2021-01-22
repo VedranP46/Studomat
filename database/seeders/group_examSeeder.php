@@ -13,6 +13,10 @@ class group_examSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('group_exams')->insert([
+        
+            'id' => Str::random(10),
+        
+        ]);
     }
 }

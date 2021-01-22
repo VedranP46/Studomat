@@ -14,9 +14,11 @@ class WorkplaceController extends Controller
      */
     public function index()
     {
-        $workplace= Workplace::paginate();
-        return view('workplaces.index', compact ('workplace')); 
-    }
+        $workplaces= Workplace::all();
+        dd($workplaces);
+        
+        return view('workplaces.index', compact ('workplaces')); 
+    }  
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +27,7 @@ class WorkplaceController extends Controller
      */
     public function create()
     {
-      //   
+      return view('workplaces.create');
     }
 
     /**
@@ -47,7 +49,8 @@ class WorkplaceController extends Controller
      */
     public function show($id)
     {
-        //
+        $workplace = Workplace::findOrFail($id);
+        dd($workplace);
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateCollegesTable extends Migration
             $table->id();
             $table->string('name', 255);        
             $table->string('adress');
-            $table->integer('oib');
+            $table->string('oib');
 
             $table->timestamps();
         });

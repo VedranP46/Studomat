@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\College;
 
 class CollegeController extends Controller
 {
@@ -13,8 +14,8 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        $college= College::paginate();
-        return view('colleg.index', compact ('colleg')); 
+        $group_exams = group_exams::paginate();
+        return view('group_exam.index', compact('group_exams'));
     }
 
     /**
@@ -46,7 +47,8 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
-        //
+        $group_exams = group_exams::paginate();
+        return view('group_exam.index', compact('group_exams'));
     }
 
     /**
@@ -57,7 +59,8 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $group_exams = group_exams::paginate();
+        return view('group_exam.index', compact('group_exams'));
     }
 
     /**
@@ -80,6 +83,11 @@ class CollegeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = group_exam::destroy($id);
+        if($success) {
+            return redirect()
+                ->route('group_exams.index')
+                ->with('success', 'Group exam sucessfully deleted.');
+        }
     }
 }

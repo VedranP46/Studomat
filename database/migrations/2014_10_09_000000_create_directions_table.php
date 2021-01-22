@@ -15,9 +15,8 @@ class CreateDirectionsTable extends Migration
     {
         Schema::create('directions', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('nativ_name', 255);
-
+            $table->string('name', 255);            
+            $table->string('nativ_name', 255);            
             $table->foreignId('college_id')->constrained();
             
             $table->timestamps();

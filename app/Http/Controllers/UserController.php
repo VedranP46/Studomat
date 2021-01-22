@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,9 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        public function login_with_credentials(){
-            
-        }
+        $users = User::with(['role', 'country'])->paginate();
+        return view('users.index', compact('users'));
+        
     }
 
     /**
@@ -47,7 +48,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find0rFail($id);
+        dd($user);
     }
 
     /**
