@@ -15,8 +15,8 @@
               <td>{{ $role->id }}</td>
               <td>{{ $role->name }}</td>
               <td class="text-center">
-                <a href="{{ route('roles.show', ['roles' => $roles->id]) }}" class="btn btn-outline-primary btn-sm">Details</a>
-                <a href="{{ route('roles.edit', ['roles' => $roles->id]) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                <a href="{{ route('role.show', ['role' => $role->id]) }}" class="btn btn-outline-primary btn-sm">Details</a>
+                <a href="{{ route('role.edit', ['role' => $role->id]) }}" class="btn btn-outline-primary btn-sm">Edit</a>
               </td>
           </tr>
       @endforeach

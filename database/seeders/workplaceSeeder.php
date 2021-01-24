@@ -16,9 +16,15 @@ class workplaceSeeder extends Seeder
     public function run()
     {
         DB::table('workplaces')->insert([
-            ['title' => profesor],
-            ['title' => student],
+            ['title' => "student",
+            'started_at' => now()],
 
+
+    
+        ],
+        [
+            ['title' => "profesor",
+            'started_at' => now()],
     
         ]);
             

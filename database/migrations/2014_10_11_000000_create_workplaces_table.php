@@ -17,7 +17,7 @@ class CreateWorkplacesTable extends Migration
             $table->id();
             $table->string('title', 255);
             $table->dateTime('started_at');
-            $table->dateTime('ended_at');
+            $table->dateTime('ended_at')->nullable();
             $table->timestamps();
         });
     }

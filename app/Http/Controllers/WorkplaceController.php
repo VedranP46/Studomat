@@ -14,9 +14,7 @@ class WorkplaceController extends Controller
      */
     public function index()
     {
-        $workplaces= Workplace::all();
-        dd($workplaces);
-        
+        $workplaces = Workplace::paginate();
         return view('workplaces.index', compact ('workplaces')); 
     }  
 
@@ -38,7 +36,12 @@ class WorkplaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* validacija podataka: ime mora biti manje od 255 znakova, biti unique, itd. */
+        $validated = $request->validate([
+            'title' => 'required|unique:workplaces|max:255',
+            'started_at' => '']);
+        $workplace = Workplace::create($validated);
+        return view('workplaces.show', compact('workplace'));
     }
 
     /**
@@ -50,7 +53,7 @@ class WorkplaceController extends Controller
     public function show($id)
     {
         $workplace = Workplace::findOrFail($id);
-        dd($workplace);
+        return view('workplaces.show', compact('workplace'));
     }
 
     /**
@@ -61,7 +64,11 @@ class WorkplaceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $workplace = Workplace::findOrFail($id);
+
+        return view('workplaces.edit',
+            compact('workplace')
+        );
     }
 
     /**
@@ -73,7 +80,15 @@ class WorkplaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        $workplace = Workplace::findOrFail($id);
+        $workplace->fill($validated);
+        $workplace->save();
+
+        return redirect()->route('workplaces.show', ['workplace' => $workplace->id]);
     }
 
     /**
@@ -84,6 +99,9 @@ class WorkplaceController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Workplace::destroy($id);
+
+         /* nakon brisanja, napravi redirect na index stranicu */
+         return redirect()->route('workplaces.index');
     }
 }

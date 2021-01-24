@@ -14,8 +14,8 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        $college= college::paginate();
-        return view('college ', compact('college'));
+        $colleges = College::paginate();
+        return view('colleges.index ', compact('colleges'));
     }
 
     /**
@@ -47,8 +47,8 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
-        $college= college::paginate();
-        return view('college ', compact('college'));
+        $colleges = College::findOrFail($id);
+        dd($colleges);
     }
 
     /**
@@ -59,7 +59,7 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        $college= college::paginate();
+        $college= College::paginate();
         return view('college ', compact('college'));
     }
 

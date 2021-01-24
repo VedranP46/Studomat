@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Models\User;
+use Hash;
 use Carbon\Carbon;
 
-class userSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,15 +16,21 @@ class userSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            [
-                'name' => Str::random(5) . '' . Str::random(5),
-                'password' => hash::make('password'),   
-                'email' => Str::random(10) . '@gmail.com',
-                'last_online' => Carbon::yesterday(),
-
-
-            ]
+        /* unos admina */
+        User::factory()->create([
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin')
         ]);
-    }    
+
+        /* unos random usera */
+        $numberOfUsers = env('SEED_USER_COUNT', 1000);
+        User::factory()
+            ->count($numberOfUsers)
+            ->create();
+        
+        $users = User::all();
+        
+        
+
+    }
 }

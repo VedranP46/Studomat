@@ -14,7 +14,7 @@ class DirectionController extends Controller
      */
     public function index()
     {
-        $directions= Direction::paginate();
+        $directions = Direction::paginate();
         return view('directions.index', compact ('directions')); 
     }
 

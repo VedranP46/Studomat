@@ -10,13 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($directions->items() as $directions)
+      @foreach ($directions->items() as $direction)
           <tr>
-              <td>{{ $directions->id }}</td>
-              <td>{{ $directions->name }}</td>
+              <td>{{ $direction->id }}</td>
+              <td>{{ $direction->name }}</td>
               <td class="text-center">
-                <a href="{{ route('directions.show', ['directions' => $directions->id]) }}" class="btn btn-outline-primary btn-sm">Details</a>
-                <a href="{{ route('directions.edit', ['directions' => $directions->id]) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                <a href="{{ route('direction.show', ['direction' => $direction->id]) }}" class="btn btn-outline-primary btn-sm">Details</a>
+                <a href="{{ route('direction.edit', ['direction' => $direction->id]) }}" class="btn btn-outline-primary btn-sm">Edit</a>
               </td>
           </tr>
       @endforeach
