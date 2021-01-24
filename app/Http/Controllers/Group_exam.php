@@ -81,6 +81,11 @@ class group_exam extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = group_exam::destroy($id);
+        if($success) {
+            return redirect()
+                ->route('group_exam.index')
+                ->with('success', 'Group exam sucessfully deleted.');
+        }
     }
 }

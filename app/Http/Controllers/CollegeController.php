@@ -14,8 +14,8 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        $group_exams = group_exams::paginate();
-        return view('group_exam.index', compact('group_exams'));
+        $college= college::paginate();
+        return view('college ', compact('college'));
     }
 
     /**
@@ -47,8 +47,8 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
-        $group_exams = group_exams::paginate();
-        return view('group_exam.index', compact('group_exams'));
+        $college= college::paginate();
+        return view('college ', compact('college'));
     }
 
     /**
@@ -59,8 +59,8 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        $group_exams = group_exams::paginate();
-        return view('group_exam.index', compact('group_exams'));
+        $college= college::paginate();
+        return view('college ', compact('college'));
     }
 
     /**
@@ -83,11 +83,11 @@ class CollegeController extends Controller
      */
     public function destroy($id)
     {
-        $success = group_exam::destroy($id);
+        $success = college::destroy($id);
         if($success) {
             return redirect()
-                ->route('group_exams.index')
-                ->with('success', 'Group exam sucessfully deleted.');
+                ->route('college.index')
+                ->with('success', 'College sucessfully deleted.');
         }
     }
 }

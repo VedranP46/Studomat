@@ -82,6 +82,12 @@ class DirectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = direction::destroy($id);
+        if($success) {
+            return redirect()
+                ->route('direction.index')
+                ->with('success', 'Direction sucessfully deleted.');
+        }
+
     }
 }

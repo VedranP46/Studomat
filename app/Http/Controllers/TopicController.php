@@ -82,6 +82,11 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = topic::destroy($id);
+        if($success) {
+            return redirect()
+                ->route('topic.index')
+                ->with('success', 'Topic sucessfully deleted.');
+        }
     }
 }
