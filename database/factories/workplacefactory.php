@@ -23,10 +23,9 @@ class WorkplaceFactory extends Factory
     public function definition()
     {
         return [
-            'id'=>str::random(10);
-            'title'str::random(20);
-            'ended_at'str::random(20);
-            'started_at'str::random(20);
+            'title' => "Test academy",
+            'ended_at' => now(),
+            'started_at' => now()
         ];
     }
 }
